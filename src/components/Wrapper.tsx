@@ -2,14 +2,14 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Route as RouteType } from "types";
 
-interface Props {
+interface WrapperProps {
   title?: string;
   sidebar?: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
   routes: RouteType[];
 }
-export default function Wrapper(props: Props) {
+export default function Wrapper(props: WrapperProps) {
 
   React.useEffect(() => {
     document.title = props.title || "";
