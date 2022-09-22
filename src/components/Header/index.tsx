@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useTransition, animated } from "react-spring";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 import "./style.scss"
 
@@ -11,6 +13,14 @@ interface HeaderProps {
   extra?: React.ReactNode;
 }
 export function Header(props: HeaderProps) {
+
+  const [navMenuShow, setNavMenuShow] = React.useState(false);
+  const navMenuTransition = useTransition(navMenuShow, {
+    from: { opacity: 0, marginTop: "-100%" },
+    enter: { opacity: 1, marginTop: "0" },
+    leave: { opacity: 0, marginTop: "-100%" },
+  });
+
   return (
     <>
       <header className={"header h-header bg-bg-dark w100 py-5 px1 box-shadow d-flex items-center content-space-between " + props.className}>
@@ -28,13 +38,32 @@ export function Header(props: HeaderProps) {
           {props.title ? <h3>{props.title}</h3> : null}
         </div>
 
-        {/* Header Nav */}
+        {/* Desktop Header Nav */}
         {props.children ? (
-          <div className="h100 d-flex items-center">
+          <div className="nav-menu h100 d-flex items-center sm-d-none">
             {props.children}
             {props.extra || null}
           </div>
         ) : null}
+
+        <FaBars
+          className="section-title d-none sm-d-block"
+          onClick={() => setNavMenuShow(true)}
+        />
+
+        {/* Mobile Header Nav */}
+        {props.children ? navMenuTransition((style, item) => item && (
+          <animated.div style={style} className="nav-menu d-none sm-d-flex">
+
+            <FaTimes
+              className="section-title nav-close"
+              onClick={() => setNavMenuShow(false)}
+            />
+
+            {props.children}
+            {props.extra || null}
+          </animated.div>
+        )) : null}
       </header>
     </>
   );
@@ -48,7 +77,7 @@ interface NavItemProps {
 };
 export function NavItem(props: NavItemProps) {
   return (
-    <NavLink to={props.path} className={"nav-item h100 clickable d-flex items-center font-light capitalize " + (props.disabled ? "disabled " : "") + props.className} >
+    <NavLink to={props.path} className={"nav-item clickable " + (props.disabled ? "disabled " : "") + props.className} >
       {props.label}
     </NavLink>
   );
@@ -65,7 +94,7 @@ export function NavDropdown(props: NavDropdownProps) {
   const [show, setShow] = React.useState(false);
   return (
     <div
-      className={"nav-item h100 relative clickable d-flex items-center font-light capitalize " + (props.disabled ? "disabled " : "") + props.className}
+      className={"nav-item relative " + (props.disabled ? "disabled " : "") + props.className}
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
