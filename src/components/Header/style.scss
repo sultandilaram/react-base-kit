@@ -1,0 +1,21 @@
+.header {
+  .nav {
+    &-item {
+      &:hover,
+      &.active {
+        color: var(--title-color);
+      }
+
+      &.disabled {
+        color: var(--text-light);
+        pointer-events: none;
+        cursor: auto;
+
+        &:hover,
+        &.active {
+          color: var(--text-light);
+        }
+      }
+    }
+  }
+}

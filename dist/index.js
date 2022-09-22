@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import { Buffer } from "buffer";
-import { Wrapper } from "./components";
+import { Header, NavDropdown, NavItem, Wrapper } from "./components";
 import { BaseProvider } from "contexts"; /// Styles
 
 import "./styles/index.scss"; /// DEPENDENCIES
@@ -9,7 +9,10 @@ window.Buffer = window.Buffer || Buffer; /// RENDER
 
 function Home() {
   return /*#__PURE__*/React.createElement("section", {
-    className: "Home"
+    className: "Home",
+    style: {
+      height: '1000px'
+    }
   }, /*#__PURE__*/React.createElement("h1", null, "Home"));
 } /// Config
 
@@ -35,8 +38,30 @@ function App() {
     config: CONFIG
   }, /*#__PURE__*/React.createElement(Wrapper, {
     routes: ROUTES,
-    title: "React Base Kit" // sidebar={<Sidebar />}
-    // header={<Header />}
+    title: "React Base Kit",
+    header: /*#__PURE__*/React.createElement(Header, {
+      title: "React Base"
+    }, /*#__PURE__*/React.createElement(NavItem, {
+      path: "/",
+      label: "Home"
+    }), /*#__PURE__*/React.createElement(NavItem, {
+      path: "/link",
+      label: "Link"
+    }), /*#__PURE__*/React.createElement(NavItem, {
+      path: "/disabled",
+      label: "disabled",
+      disabled: true
+    }), /*#__PURE__*/React.createElement(NavDropdown, {
+      label: "Dropdown"
+    }, /*#__PURE__*/React.createElement(NavItem, {
+      path: "/dropdown",
+      label: "Dropdown Link"
+    }), /*#__PURE__*/React.createElement(NavItem, {
+      path: "/dropdown",
+      label: "Dropdown Link"
+    })), /*#__PURE__*/React.createElement("button", {
+      className: "btn btn-primary"
+    }, "Button")) // sidebar={<Sidebar />}
     // footer={<Footer />}
 
   })));

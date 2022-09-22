@@ -459,8 +459,8 @@ $breakpoints: (
     &-light {
       background-color: var(--#{$color}-color-light);
     }
-    &-alt {
-      background-color: var(--#{$color}-color-alt);
+    &-dark {
+      background-color: var(--#{$color}-color-dark);
     }
     &-gradient {
       background: var(--#{$color}-gradient);
@@ -474,8 +474,8 @@ $breakpoints: (
     &-light:hover {
       background-color: var(--#{$color}-color-light);
     }
-    &-alt:hover {
-      background-color: var(--#{$color}-color-alt);
+    &-dark:hover {
+      background-color: var(--#{$color}-color-dark);
     }
     &-gradient:hover {
       background: var(--#{$color}-gradient);
@@ -487,8 +487,8 @@ $breakpoints: (
     &-light {
       background-color: var(--#{$color}-color-light);
     }
-    &-alt {
-      background-color: var(--#{$color}-color-alt);
+    &-dark {
+      background-color: var(--#{$color}-color-dark);
     }
     &-gradient {
       background: var(--#{$color}-gradient);
@@ -500,8 +500,8 @@ $breakpoints: (
     &-light {
       color: var(--#{$color}-color-light);
     }
-    &-alt {
-      color: var(--#{$color}-color-alt);
+    &-dark {
+      color: var(--#{$color}-color-dark);
     }
   }
 
@@ -512,8 +512,8 @@ $breakpoints: (
     &-light:hover {
       color: var(--#{$color}-color-light);
     }
-    &-alt:hover {
-      color: var(--#{$color}-color-alt);
+    &-dark:hover {
+      color: var(--#{$color}-color-dark);
     }
   }
 
@@ -522,26 +522,26 @@ $breakpoints: (
     &-light {
       color: var(--#{$color}-color-light);
     }
-    &-alt {
-      color: var(--#{$color}-color-alt);
+    &-dark {
+      color: var(--#{$color}-color-dark);
     }
   }
 
   .link-#{$color} {
     color: var(--#{$color}-color);
     &:hover {
-      color: var(--#{$color}-color-alt);
+      color: var(--#{$color}-color-dark);
     }
   }
 
   .b-#{$color} {
-    border-color: var(--#{$color}-color-alt);
+    border-color: var(--#{$color}-color-dark);
   }
 
   .btn-#{$color} {
     background-color: var(--#{$color}-color);
     &:hover {
-      background-color: var(--#{$color}-color-alt);
+      background-color: var(--#{$color}-color-dark);
     }
   }
 
@@ -568,8 +568,8 @@ $breakpoints: (
   }
 
   .alert-#{$color} {
-    color: var(--#{$color}-color-alt);
+    color: var(--#{$color}-color-dark);
     background-color: var(--#{$color}-color-light);
-    border: 1px solid var(--#{$color}-alert-alt);
+    border: 1px solid var(--#{$color}-alert-dark);
   }
 }

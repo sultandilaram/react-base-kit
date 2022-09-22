@@ -1,5 +1,3 @@
-import React from "react";
-
 export type BaseEnvironment = "prod" | "dev" | "local";
 
 export type BaseConfig = {
@@ -19,11 +17,6 @@ export interface Response<T = any> {
   message: string;
   data: T;
 }
-
-export type Route = {
-  path: string;
-  element: React.ReactNode;
-};
 
 type ArrayLengthMutationKeys =
   | "splice"
@@ -48,3 +41,5 @@ export type FixedLengthArray<T extends any[]> = Pick<
   T,
   Exclude<keyof T, ArrayLengthMutationKeys>
 > & { [Symbol.iterator]: () => IterableIterator<ArrayItems<T>> };
+
+export * from "./components";

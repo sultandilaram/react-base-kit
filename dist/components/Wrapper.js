@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-export default function Wrapper(props) {
+export function Wrapper(props) {
   React.useEffect(() => {
     document.title = props.title || "";
   }, [props.title]);
