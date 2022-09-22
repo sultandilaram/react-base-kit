@@ -9,7 +9,7 @@ interface WrapperProps {
   footer?: React.ReactNode;
   routes: RouteType[];
 }
-export default function Wrapper(props: WrapperProps) {
+export function Wrapper(props: WrapperProps) {
 
   React.useEffect(() => {
     document.title = props.title || "";
