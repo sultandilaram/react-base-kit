@@ -27,13 +27,6 @@ export function Header(props: HeaderProps) {
 
         {/* Header Brand */}
         <div className="h100 d-flex items-center">
-          {/* {
-            props.sidebar ? (
-              sidebarShow
-                ? <FaTimes className="clickable d-none sm-d-block" onClick={() => toggleSidebar(false)} />
-                : <FaBars className="clickable d-none sm-d-block" onClick={() => toggleSidebar(true)} />
-            ) : null
-          } */}
           {props.logo ? <img className="h100" src={props.logo} alt={props.title} /> : null}
           {props.title ? <h3>{props.title}</h3> : null}
         </div>
