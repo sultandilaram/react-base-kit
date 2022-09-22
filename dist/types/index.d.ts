@@ -1,3 +1,4 @@
+import React from "react";
 export declare type BaseEnvironment = "prod" | "dev" | "local";
 export declare type BaseConfig = {
     environment: BaseEnvironment;
@@ -15,3 +16,21 @@ export interface Response<T = any> {
     message: string;
     data: T;
 }
+export declare type Route = {
+    path: string;
+    element: React.ReactNode;
+};
+declare type ArrayLengthMutationKeys = "splice" | "push" | "pop" | "shift" | "unshift" | number;
+declare type ArrayItems<T extends Array<any>> = T extends Array<infer TItems> ? TItems : never;
+/**
+ * Declare a type with fixed length and types
+ *
+ * ```ts
+ * let myFixedLengthArray: FixedLengthArray< [string, string, number]>
+ * myFixedLengthArray = [ 'a', 'b', 0 ]
+ * ```
+ */
+export declare type FixedLengthArray<T extends any[]> = Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>> & {
+    [Symbol.iterator]: () => IterableIterator<ArrayItems<T>>;
+};
+export {};

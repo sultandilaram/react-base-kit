@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "test": "mv ./src/index.ts ./src/_index.ts",
+    "start": "react-scripts start",
     "build": "mv ./src/_index.ts ./src/index.ts && rm -rf dist && mkdir dist &&  babel src --extensions \".tsx,.ts\" -d dist --copy-files && tsc"
   },
   "dependencies": {
@@ -17,7 +18,8 @@
     "axios": "^0.27.2",
     "react-toastify": "^9.0.8",
     "sass": "^1.54.9",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
@@ -25,7 +27,22 @@
     "@babel/plugin-syntax-class-properties": "^7.12.13",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
-    "@types/react": "^18.0.20",
-    "react": "^18.2.0"
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1",
+    "react-scripts": "^5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
