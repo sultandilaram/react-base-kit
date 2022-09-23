@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { BaseConfig } from '../types';
 declare type Props = {
     config: BaseConfig;
