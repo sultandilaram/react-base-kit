@@ -1,3 +1,4 @@
+import React from 'react';
 import { BaseContext } from './contexts';
 export default function BaseProvider({
   config,

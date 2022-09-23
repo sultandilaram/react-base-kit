@@ -1,3 +1,4 @@
+import React from 'react'
 import { BaseConfig } from '../types'
 import { BaseContext } from './contexts'
 
