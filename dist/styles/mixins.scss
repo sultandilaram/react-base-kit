@@ -29,26 +29,139 @@ $breakpoints: (
 
 @mixin margin($prefix, $value) {
   .#{$prefix}m {
+    @if $value == 1 {
+      &-auto {
+        margin: auto;
+      }
+      &x-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      &y-auto {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+      &l-auto {
+        margin-left: auto;
+      }
+      &r-auto {
+        margin-right: auto;
+      }
+      &b-auto {
+        margin-bottom: auto;
+      }
+      &t-auto {
+        margin-top: auto;
+      }
+    }
+
+    &-#{$value} {
+      margin: calc(($value / 10) * 1rem);
+      &px {
+        margin: calc(($value / 10) * 1px);
+      }
+    }
     &#{$value} {
       margin: $value * 1rem;
+
+      &px {
+        margin: $value * 1px;
+      }
     }
+
+    &x#{$value} {
+      margin-left: $value * 1rem;
+      margin-right: $value * 1rem;
+      &px {
+        margin-left: $value * 1px;
+        margin-right: $value * 1px;
+      }
+    }
+    &x-#{$value} {
+      margin-left: calc(($value / 10) * 1rem);
+      margin-right: calc(($value / 10) * 1rem);
+      &px {
+        margin-left: calc(($value / 10) * 1px);
+        margin-right: calc(($value / 10) * 1px);
+      }
+    }
+
+    &y#{$value} {
+      margin-top: $value * 1rem;
+      margin-bottom: $value * 1rem;
+      &px {
+        margin-top: $value * 1px;
+        margin-bottom: $value * 1px;
+      }
+    }
+    yx-#{$value} {
+      margin-top: calc(($value / 10) * 1rem);
+      margin-bottom: calc(($value / 10) * 1rem);
+      &px {
+        margin-top: calc(($value / 10) * 1px);
+        margin-bottom: calc(($value / 10) * 1px);
+      }
+    }
+
     &l#{$value} {
       margin-left: $value * 1rem;
+
+      &px {
+        margin: $value * 1px;
+      }
     }
     &r#{$value} {
       margin-right: $value * 1rem;
+
+      &px {
+        margin: $value * 1px;
+      }
     }
     &b#{$value} {
       margin-bottom: $value * 1rem;
+
+      &px {
+        margin: $value * 1px;
+      }
     }
     &t#{$value} {
       margin-top: $value * 1rem;
+
+      &px {
+        margin: $value * 1px;
+      }
     }
   }
 }
 
 @mixin padding($prefix, $value) {
   .#{$prefix}p {
+    @if $value == 1 {
+      &-auto {
+        padding: auto;
+      }
+      &x-auto {
+        padding-left: auto;
+        padding-right: auto;
+      }
+      &y-auto {
+        padding-top: auto;
+        padding-bottom: auto;
+      }
+      &l-auto {
+        padding-left: auto;
+      }
+      &r-auto {
+        padding-right: auto;
+      }
+      &b-auto {
+        padding-bottom: auto;
+      }
+      &t-auto {
+        padding-top: auto;
+      }
+    }
+
     &#{$value} {
       padding: $value * 1rem;
       &px {
@@ -128,6 +241,15 @@ $breakpoints: (
 
 @mixin border($prefix, $value) {
   .#{$prefix}b {
+    @if $value == 1 {
+      &-none {
+        border: none;
+      }
+      &-auto {
+        border: auto;
+      }
+    }
+
     &#{$value} {
       border: $value * 1px solid var(--border-color) !important;
     }
@@ -147,6 +269,26 @@ $breakpoints: (
 }
 
 @mixin height_width($prefix, $value) {
+  @if $value == 1 {
+    .#{$prefix}h-auto {
+      height: auto;
+    }
+    .#{$prefix}w-auto {
+      width: auto;
+    }
+    .#{$prefix}min-h-auto {
+      min-height: auto;
+    }
+    .#{$prefix}min-w-auto {
+      min-width: auto;
+    }
+    .#{$prefix}max-h-auto {
+      max-height: auto;
+    }
+    .#{$prefix}max-w-auto {
+      max-width: auto;
+    }
+  }
   @if $value > 0 and $value <= 100 {
     .#{$prefix}h#{$value} {
       height: $value * 1%;
@@ -216,12 +358,24 @@ $breakpoints: (
 @mixin gap($prefix, $value) {
   .#{$prefix}gap#{$value} {
     gap: $value * 1rem;
+
+    &px {
+      gap: $value * 1px;
+    }
   }
   .#{$prefix}gap-col#{$value} {
     column-gap: $value * 1rem;
+
+    &px {
+      column-gap: $value * 1px;
+    }
   }
   .#{$prefix}gap-row#{$value} {
     row-gap: $value * 1rem;
+
+    &px {
+      row-gap: $value * 1px;
+    }
   }
 }
 
@@ -279,6 +433,15 @@ $breakpoints: (
       display: inline-grid;
       gap: 0.5rem;
     }
+    &-table {
+      display: table;
+    }
+    &-table-row {
+      display: table-row;
+    }
+    &-table-cell {
+      display: table-cell;
+    }
   }
 }
 
@@ -296,22 +459,53 @@ $breakpoints: (
         flex-direction: column-reverse;
       }
     }
+
+    &-none {
+      flex: none;
+    }
+    &-initial {
+      flex: 0 1 auto;
+    }
+    &-auto {
+      flex: 1 1 auto;
+    }
+
     &-wrap {
       flex-wrap: wrap;
     }
     &-nowrap {
       flex-wrap: nowrap;
     }
+
+    &-shrink {
+      flex-shrink: 1;
+    }
     &-noshrink {
       flex-shrink: 0;
     }
+
+    &-grow {
+      flex-grow: 1;
+    }
     &-nogrow {
       flex-grow: 0;
+    }
+
+    @for $i from 0 through 500 {
+      &-#{$i} {
+        flex: $i $i 0%;
+      }
     }
   }
 }
 
 @mixin align($prefix) {
+  .#{$prefix}children-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .#{$prefix}content {
     &-center {
       justify-content: center;
@@ -322,6 +516,21 @@ $breakpoints: (
     &-end {
       justify-content: flex-end;
     }
+    &-between {
+      justify-content: space-between;
+    }
+    &-around {
+      justify-content: space-around;
+    }
+    &-evenly {
+      justify-content: space-evenly;
+    }
+    &-stretch {
+      justify-content: stretch;
+    }
+    &-baseline {
+      justify-content: baseline;
+    }
     &-space {
       &-between {
         justify-content: space-between;
@@ -330,7 +539,7 @@ $breakpoints: (
         justify-content: space-around;
       }
       &-evenly {
-        justify-content: space-evenyl;
+        justify-content: space-evenly;
       }
     }
   }
@@ -343,6 +552,21 @@ $breakpoints: (
     }
     &-end {
       align-items: flex-end;
+    }
+    &-between {
+      align-items: space-between;
+    }
+    &-around {
+      align-items: space-around;
+    }
+    &-evenly {
+      align-items: space-evenly;
+    }
+    &-stretch {
+      align-items: stretch;
+    }
+    &-baseline {
+      align-items: baseline;
     }
     &-space {
       &-between {
@@ -357,6 +581,40 @@ $breakpoints: (
     }
   }
 
+  .#{$prefix}self {
+    &-center {
+      justify-self: center;
+      align-self: center;
+    }
+    &-start {
+      justify-self: flex-start;
+      align-self: flex-start;
+    }
+    &-end {
+      justify-self: flex-end;
+      align-self: flex-end;
+    }
+    &-between {
+      justify-self: space-between;
+      align-self: space-between;
+    }
+    &-around {
+      justify-self: space-around;
+      align-self: space-around;
+    }
+    &-evenly {
+      justify-self: space-evenly;
+      align-self: space-evenly;
+    }
+    &-stretch {
+      justify-self: stretch;
+      align-self: stretch;
+    }
+    &-baseline {
+      justify-self: baseline;
+      align-self: baseline;
+    }
+  }
   .#{$prefix}justify-self {
     &-center {
       justify-self: center;
@@ -366,6 +624,21 @@ $breakpoints: (
     }
     &-end {
       justify-self: flex-end;
+    }
+    &-between {
+      justify-self: space-between;
+    }
+    &-around {
+      justify-self: space-around;
+    }
+    &-evenly {
+      justify-self: space-evenly;
+    }
+    &-stretch {
+      justify-self: stretch;
+    }
+    &-baseline {
+      justify-self: baseline;
     }
   }
   .#{$prefix}align-self {
@@ -377,6 +650,21 @@ $breakpoints: (
     }
     &-end {
       align-self: flex-end;
+    }
+    &-between {
+      align-self: space-between;
+    }
+    &-around {
+      align-self: space-around;
+    }
+    &-evenly {
+      align-self: space-evenly;
+    }
+    &-stretch {
+      align-self: stretch;
+    }
+    &-baseline {
+      align-self: baseline;
     }
   }
 
@@ -419,32 +707,41 @@ $breakpoints: (
   }
 
   .#{$prefix}overflow {
-    &-hidden {
-      overflow: hidden;
-    }
     &-auto {
       overflow: auto;
+    }
+    &-visible {
+      overflow: visible;
+    }
+    &-hidden {
+      overflow: hidden;
     }
     &-scroll {
       overflow: scroll;
     }
     &-x {
-      &-hidden {
-        overflow-x: hidden;
-      }
       &-auto {
         overflow-x: auto;
+      }
+      &-visible {
+        overflow-x: visible;
+      }
+      &-hidden {
+        overflow-x: hidden;
       }
       &-scroll {
         overflow-x: scroll;
       }
     }
     &-y {
-      &-hidden {
-        overflow-y: hidden;
-      }
       &-auto {
         overflow-y: auto;
+      }
+      &-visible {
+        overflow-y: visible;
+      }
+      &-hidden {
+        overflow-y: hidden;
       }
       &-scroll {
         overflow-y: scroll;
@@ -453,9 +750,30 @@ $breakpoints: (
   }
 }
 
+@mixin gen-color($name, $hue, $saturation, $lightness) {
+  --#{$name}-color: hsl(#{$hue}, #{$saturation}, #{$lightness});
+  --#{$name}-color-light: hsl(
+    #{$hue},
+    #{$saturation},
+    calc(#{$lightness} + 10%)
+  );
+  --#{$name}-color-dark: hsl(
+    #{$hue},
+    #{$saturation},
+    calc(#{$lightness} - 10%)
+  );
+  --#{$name}-color-hover: hsl(
+    #{$hue},
+    #{$saturation},
+    calc(#{$lightness} - 5%)
+  );
+}
+
 @mixin color($color) {
-  .bg-#{$color} {
+  .bg-#{$color},
+  .active.active-bg-#{$color} {
     background-color: var(--#{$color}-color);
+
     &-light {
       background-color: var(--#{$color}-color-light);
     }
@@ -482,20 +800,8 @@ $breakpoints: (
     }
   }
 
-  .active.active-bg-#{$color} {
-    background-color: var(--#{$color}-color);
-    &-light {
-      background-color: var(--#{$color}-color-light);
-    }
-    &-dark {
-      background-color: var(--#{$color}-color-dark);
-    }
-    &-gradient {
-      background: var(--#{$color}-gradient);
-    }
-  }
-
-  .text-#{$color} {
+  .text-#{$color},
+  .active.active-text-#{$color} {
     color: var(--#{$color}-color);
     &-light {
       color: var(--#{$color}-color-light);
@@ -513,16 +819,6 @@ $breakpoints: (
       color: var(--#{$color}-color-light);
     }
     &-dark:hover {
-      color: var(--#{$color}-color-dark);
-    }
-  }
-
-  .active.active-text-#{$color} {
-    color: var(--#{$color}-color);
-    &-light {
-      color: var(--#{$color}-color-light);
-    }
-    &-dark {
       color: var(--#{$color}-color-dark);
     }
   }
@@ -551,7 +847,6 @@ $breakpoints: (
     color: var(--#{$color}-color);
     transition: 0.3s;
     &:hover {
-      color: white;
       background-color: var(--#{$color}-color);
     }
   }
@@ -562,14 +857,13 @@ $breakpoints: (
     color: var(--#{$color}-color);
     transition: 0.3s;
     &:hover {
-      color: white;
       background-color: var(--#{$color}-color);
     }
   }
 
   .alert-#{$color} {
-    color: var(--#{$color}-color-dark);
     background-color: var(--#{$color}-color-light);
+    color: var(--#{$color}-color-dark);
     border: 1px solid var(--#{$color}-alert-dark);
   }
 }

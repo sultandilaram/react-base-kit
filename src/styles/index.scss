@@ -48,8 +48,8 @@ section {
   width: 100vw;
   overflow: hidden;
   display: flex;
-  .siderbar {
-    width: var(--siderbar-width);
+  .sidebar {
+    width: var(--sidebar-width);
   }
   main {
     width: 100%;
@@ -63,6 +63,59 @@ section {
 }
 
 // ============================ Components ============================
+
+.btn {
+  display: inline-block;
+  color: var(--light-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 3px;
+  font-size: var(--font-size);
+  font-weight: var(--font-medium);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  text-align: center;
+
+  &-light {
+    color: var(--dark-color);
+  }
+
+  &-block {
+    width: 100%;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: initial;
+    pointer-events: none;
+  }
+
+  &:active {
+    box-shadow: var(--box-shadow-inset);
+  }
+
+  &-group {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    width: max-content;
+    .btn {
+      border-radius: 0;
+    }
+    &:hover {
+      box-shadow: var(--box-shadow);
+    }
+  }
+
+  &-icon {
+    font-size: 1.25rem;
+    margin-left: 0.5rem;
+  }
+
+  &-flex {
+    display: inline-flex;
+    align-items: center;
+  }
+}
 
 .tooltip {
   position: absolute;
@@ -152,51 +205,6 @@ section {
   }
 }
 
-.btn {
-  display: inline-block;
-  color: var(--light-color);
-  padding: 0.5rem 0.75rem;
-  border-radius: 3px;
-  font-size: var(--font-size);
-  font-weight: var(--font-medium);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  text-align: center;
-  &.disabled {
-    opacity: 0.5;
-    cursor: initial;
-  }
-  &-light {
-    color: var(--dark-color);
-  }
-  &-block {
-    width: 100%;
-  }
-  &:active {
-    box-shadow: var(--box-shadow-inset);
-  }
-  &-group {
-    border-radius: 0.5rem;
-    overflow: hidden;
-    width: max-content;
-    .btn {
-      border-radius: 0;
-    }
-    &:hover {
-      box-shadow: var(--box-shadow);
-    }
-  }
-  &-icon {
-    font-size: 1.25rem;
-    margin-left: 0.5rem;
-  }
-  &-flex {
-    display: inline-flex;
-    align-items: center;
-  }
-}
-
 .dropdown {
   width: max-content;
   position: absolute;
@@ -240,6 +248,93 @@ section {
   }
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-modal);
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .modal-content {
+    background-color: var(--bg-color-dark);
+    color: var(--light-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    padding: 1rem;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: var(--z-modal-content);
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      .modal-title {
+        font-size: var(--font-medium);
+      }
+      .modal-close {
+        font-size: 1.25rem;
+        cursor: pointer;
+      }
+    }
+    .modal-body {
+      margin-bottom: 1rem;
+    }
+    .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .btn {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  color: var(--light-color);
+  font-size: var(--font-small);
+  position: relative;
+  z-index: var(--z-alert);
+  &.success {
+    background-color: var(--success-color);
+  }
+  &.danger {
+    background-color: var(--danger-color);
+  }
+  &.warning {
+    background-color: var(--warning-color);
+  }
+  &.info {
+    background-color: var(--info-color);
+  }
+  &.light {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+  }
+  &.dark {
+    background-color: var(--dark-color);
+  }
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -251,6 +346,16 @@ table {
 }
 
 // ============================ Box and border ============================
+
+.box {
+  background-color: var(--bg-color-dark);
+  color: var(--light-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-light);
+  padding: 1rem;
+}
+
 .rounded {
   border-radius: var(--border-radius);
 }
@@ -361,31 +466,15 @@ h4,
   font-style: italic;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
-.text-underline {
+.underline {
   text-decoration: underline;
 }
 
-.text-line-through {
+.line-through {
   text-decoration: line-through;
 }
 
-.text-overline {
+.overline {
   text-decoration: overline;
 }
 
@@ -460,20 +549,6 @@ h4,
   @include breakpoint($breakpoint) {
     // ----- Alignments -----
 
-    @for $i from 0 through 500 {
-      @include height_width($prefix, $i);
-    }
-
-    .#{$prefix}h-header {
-      height: var(--header-height);
-    }
-
-    .#{$prefix}children-center {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     .#{$prefix}visible {
       visibility: visible;
       opacity: 1;
@@ -488,9 +563,17 @@ h4,
     @include flex($prefix);
     @include align($prefix);
 
-    @for $i from 0 through 12 {
+    .#{$prefix}h-header {
+      height: var(--header-height);
+    }
+
+    @for $i from 0 through 500 {
+      @include height_width($prefix, $i);
       @include margin($prefix, $i);
       @include padding($prefix, $i);
+    }
+
+    @for $i from 0 through 12 {
       @include border($prefix, $i);
       @include gap($prefix, $i);
       @include grid-define($prefix, $i);
