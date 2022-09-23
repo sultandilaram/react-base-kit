@@ -355,6 +355,51 @@ $breakpoints: (
   }
 }
 
+@mixin position($prefix, $value) {
+  @if $value == 1 {
+    .#{$prefix}static {
+      position: static;
+    }
+    .#{$prefix}fixed {
+      position: fixed;
+    }
+    .#{$prefix}absolute {
+      position: absolute;
+    }
+    .#{$prefix}relative {
+      position: relative;
+    }
+    .#{$prefix}sticky {
+      position: sticky;
+    }
+  }
+
+  .#{$prefix}top#{$value} {
+    top: $value * 1rem;
+    &px {
+      top: $value * 1px;
+    }
+  }
+  .#{$prefix}bottom#{$value} {
+    bottom: $value * 1rem;
+    &px {
+      bottom: $value * 1px;
+    }
+  }
+  .#{$prefix}left#{$value} {
+    left: $value * 1rem;
+    &px {
+      left: $value * 1px;
+    }
+  }
+  .#{$prefix}right#{$value} {
+    right: $value * 1rem;
+    &px {
+      right: $value * 1px;
+    }
+  }
+}
+
 @mixin gap($prefix, $value) {
   .#{$prefix}gap#{$value} {
     gap: $value * 1rem;
@@ -666,23 +711,6 @@ $breakpoints: (
     &-baseline {
       align-self: baseline;
     }
-  }
-
-  .#{$prefix}relative {
-    position: relative;
-  }
-
-  .#{$prefix}absolute {
-    position: absolute;
-  }
-
-  .#{$prefix}fixed {
-    position: fixed;
-    z-index: var(--z-fixed);
-  }
-
-  .#{$prefix}sticky {
-    position: sticky;
   }
 
   .#{$prefix}text {

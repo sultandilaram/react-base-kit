@@ -7,11 +7,13 @@
   "repository": "git@github.com:sultandilaram/react-base-kit.git",
   "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
     "test": "mv ./src/index.ts ./src/_index.ts",
+    "start": "react-scripts start",
+    "dev": "concurrently  \"yarn sass:build -w\" \"yarn start \" ",
     "reset": "mv ./src/_index.ts ./src/index.ts && rm -rf dist && mkdir dist",
-    "build-babel": "babel src --extensions \".tsx,.ts\" -d dist --copy-files",
-    "build": "yarn reset && yarn build-babel && tsc"
+    "sass:build": "node-sass --include-path scss src/styles/index.scss -o src/styles --output-style compressed",
+    "babel:build": "babel src --extensions \".tsx,.ts\" -d dist --copy-files --no-copy-ignored",
+    "build": "yarn reset && yarn sass:build && yarn babel:build && tsc"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -30,6 +32,8 @@
     "@babel/preset-typescript": "^7.18.6",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "concurrently": "^7.4.0",
+    "node-sass": "^7.0.3",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1"
   },
