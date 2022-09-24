@@ -1,8 +1,10 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 import React from 'react';
 export function Tooltip(props) {
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
     className: "tooltip " + (props.position || "bottom") + " " + props.className
-  }, props.children);
+  }), props.children);
 }
 export function Dropdown(props) {
   const [show, setShow] = React.useState(false);

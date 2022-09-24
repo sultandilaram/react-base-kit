@@ -1,12 +1,10 @@
 import React from 'react'
 
-interface TooltipProps {
+interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   position?: 'top' | 'bottom' | 'left' | 'right'
-  className?: string
-  children: React.ReactNode
 }
 export function Tooltip(props: TooltipProps) {
-  return (<div className={"tooltip " + (props.position || "bottom") + " " + props.className} >{props.children}</div>)
+  return (<div {...props} className={"tooltip " + (props.position || "bottom") + " " + props.className} >{props.children}</div>)
 }
 
 interface DropdownProps {

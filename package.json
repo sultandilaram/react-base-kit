@@ -11,7 +11,7 @@
     "start": "react-scripts start",
     "dev": "concurrently  \"yarn sass:build -w\" \"yarn start \" ",
     "reset": "mv ./src/_index.ts ./src/index.ts && rm -rf dist && mkdir dist",
-    "sass:build": "node-sass --include-path scss src/styles/index.scss -o src/styles --output-style compressed",
+    "sass:build": "node-sass --include-path scss src/styles/index.scss -o src/styles",
     "babel:build": "babel src --extensions \".tsx,.ts\" -d dist --copy-files --no-copy-ignored",
     "build": "yarn reset && yarn sass:build && yarn babel:build && tsc"
   },
