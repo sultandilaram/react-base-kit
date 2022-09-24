@@ -45,10 +45,10 @@ export function ModalWrapper(props: ModalWrapperProps) {
 
   return modalTransition((style, item) => item && (
     <animated.div
+      {...props}
       style={style}
       className={"modal-wrapper fixed top0 left0 vh100 vw100 mask-light children-center z-modal " + props.className}
       onClick={dismissHandler}
-      {...props}
     >
       <div className="modal relative w100 max-w500px b1 rounded box-shadow bg-bg-dark overflow-hidden">
         {props.children}
@@ -64,7 +64,7 @@ interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 export function ModalHeader(props: ModalHeaderProps) {
   return (
-    <div className={"p-5 d-flex content-between items-center bb1 " + props.className} {...props}>
+    <div {...props} className={"p-5 d-flex content-between items-center bb1 " + props.className}>
       <div>
         {props.title ? (<h3>{props.title}</h3>) : null}
         {props.children}
@@ -82,7 +82,7 @@ interface ModalBodyProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 export function ModalBody(props: ModalBodyProps) {
   return (
-    <div className={"p-5 bg-bg " + props.className} {...props} >
+    <div {...props} className={"p-5 bg-bg " + props.className} >
       {props.children}
     </div>
   )
@@ -93,7 +93,7 @@ interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 export function ModalFooter(props: ModalFooterProps) {
   return (
-    <div className={"p-5 d-flex content-end items-center bt1 " + props.className} {...props}>
+    <div {...props} className={"p-5 d-flex content-end items-center bt1 " + props.className}>
       {props.children}
     </div>
   )
