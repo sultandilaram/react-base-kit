@@ -118,6 +118,8 @@ section {
 }
 
 .tooltip {
+  width: max-content;
+  height: max-content;
   position: absolute;
   z-index: var(--z-tooltip);
   background-color: rgba(0, 0, 0, 0.8);
@@ -207,15 +209,14 @@ section {
 
 .dropdown {
   width: max-content;
+  height: max-content;
   position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, calc(100% + 0.5rem));
   z-index: var(--z-tooltip);
   background-color: var(--bg-color-dark);
   color: var(--light-color);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
+  overflow: hidden;
   box-shadow: var(--box-shadow-light);
   font-size: var(--font-small);
   visibility: hidden;
@@ -224,12 +225,20 @@ section {
 
   & > * {
     padding: 1rem;
+    &:hover {
+      background-color: var(--bg-color);
+    }
   }
 
   &.top {
     left: 50%;
     bottom: 0;
     transform: translate(-50%, calc(-100% - 0.5rem));
+  }
+  &.bottom {
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, calc(100% + 0.5rem));
   }
   &.left {
     top: 50%;
