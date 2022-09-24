@@ -2,9 +2,9 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 import React from 'react';
 export function Card(props) {
-  return /*#__PURE__*/React.createElement("div", {
-    className: "card b1 rounded box-shadow bg-bg-dark overflow-hidden"
-  }, props.children);
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    className: "card b1 rounded box-shadow bg-bg-dark " + props.className
+  }), props.children);
 }
 export function CardHeader(props) {
   return /*#__PURE__*/React.createElement("div", _extends({}, props, {
