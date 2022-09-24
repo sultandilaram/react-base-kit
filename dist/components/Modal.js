@@ -37,29 +37,29 @@ export function ModalWrapper(props) {
     }
   };
 
-  return modalTransition((style, item) => item && /*#__PURE__*/React.createElement(animated.div, _extends({
+  return modalTransition((style, item) => item && /*#__PURE__*/React.createElement(animated.div, _extends({}, props, {
     style: style,
     className: "modal-wrapper fixed top0 left0 vh100 vw100 mask-light children-center z-modal " + props.className,
     onClick: dismissHandler
-  }, props), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "modal relative w100 max-w500px b1 rounded box-shadow bg-bg-dark overflow-hidden"
   }, props.children)));
 }
 export function ModalHeader(props) {
-  return /*#__PURE__*/React.createElement("div", _extends({
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
     className: "p-5 d-flex content-between items-center bb1 " + props.className
-  }, props), /*#__PURE__*/React.createElement("div", null, props.title ? /*#__PURE__*/React.createElement("h3", null, props.title) : null, props.children), /*#__PURE__*/React.createElement(FaTimes, {
+  }), /*#__PURE__*/React.createElement("div", null, props.title ? /*#__PURE__*/React.createElement("h3", null, props.title) : null, props.children), /*#__PURE__*/React.createElement(FaTimes, {
     className: "modal-close clickable",
     onClick: () => props.showState[1](false)
   }));
 }
 export function ModalBody(props) {
-  return /*#__PURE__*/React.createElement("div", _extends({
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
     className: "p-5 bg-bg " + props.className
-  }, props), props.children);
+  }), props.children);
 }
 export function ModalFooter(props) {
-  return /*#__PURE__*/React.createElement("div", _extends({
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
     className: "p-5 d-flex content-end items-center bt1 " + props.className
-  }, props), props.children);
+  }), props.children);
 }
