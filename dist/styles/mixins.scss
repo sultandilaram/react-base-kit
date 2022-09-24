@@ -56,9 +56,9 @@ $breakpoints: (
     }
 
     &-#{$value} {
-      margin: calc(($value / 10) * 1rem);
+      margin: calc((#{$value} / 10) * 1rem);
       &px {
-        margin: calc(($value / 10) * 1px);
+        margin: calc((#{$value} / 10) * 1px);
       }
     }
     &#{$value} {
@@ -78,11 +78,11 @@ $breakpoints: (
       }
     }
     &x-#{$value} {
-      margin-left: calc(($value / 10) * 1rem);
-      margin-right: calc(($value / 10) * 1rem);
+      margin-left: calc((#{$value} / 10) * 1rem);
+      margin-right: calc((#{$value} / 10) * 1rem);
       &px {
-        margin-left: calc(($value / 10) * 1px);
-        margin-right: calc(($value / 10) * 1px);
+        margin-left: calc((#{$value} / 10) * 1px);
+        margin-right: calc((#{$value} / 10) * 1px);
       }
     }
 
@@ -95,11 +95,11 @@ $breakpoints: (
       }
     }
     yx-#{$value} {
-      margin-top: calc(($value / 10) * 1rem);
-      margin-bottom: calc(($value / 10) * 1rem);
+      margin-top: calc((#{$value} / 10) * 1rem);
+      margin-bottom: calc((#{$value} / 10) * 1rem);
       &px {
-        margin-top: calc(($value / 10) * 1px);
-        margin-bottom: calc(($value / 10) * 1px);
+        margin-top: calc((#{$value} / 10) * 1px);
+        margin-bottom: calc((#{$value} / 10) * 1px);
       }
     }
 
@@ -169,9 +169,9 @@ $breakpoints: (
       }
     }
     &-#{$value} {
-      padding: calc(($value / 10) * 1rem);
+      padding: calc((#{$value} / 10) * 1rem);
       &px {
-        padding: calc(($value / 10) * 1px);
+        padding: calc((#{$value} / 10) * 1px);
       }
     }
 
@@ -184,11 +184,11 @@ $breakpoints: (
       }
     }
     &x-#{$value} {
-      padding-left: calc(($value / 10) * 1rem);
-      padding-right: calc(($value / 10) * 1rem);
+      padding-left: calc((#{$value} / 10) * 1rem);
+      padding-right: calc((#{$value} / 10) * 1rem);
       &px {
-        padding-left: calc(($value / 10) * 1px);
-        padding-right: calc(($value / 10) * 1px);
+        padding-left: calc((#{$value} / 10) * 1px);
+        padding-right: calc((#{$value} / 10) * 1px);
       }
     }
 
@@ -201,11 +201,11 @@ $breakpoints: (
       }
     }
     &y-#{$value} {
-      padding-top: calc(($value / 10) * 1rem);
-      padding-bottom: calc(($value / 10) * 1rem);
+      padding-top: calc((#{$value} / 10) * 1rem);
+      padding-bottom: calc((#{$value} / 10) * 1rem);
       &px {
-        padding-top: calc(($value / 10) * 1px);
-        padding-bottom: calc(($value / 10) * 1px);
+        padding-top: calc((#{$value} / 10) * 1px);
+        padding-bottom: calc((#{$value} / 10) * 1px);
       }
     }
 

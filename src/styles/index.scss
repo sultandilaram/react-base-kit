@@ -322,15 +322,11 @@ table {
 }
 
 .modal {
-  &-wrapper {
-    z-index: var(--z-modal);
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
+  & &-close {
+    color: var(--text-light);
 
-    &.show {
-      visibility: visible;
-      opacity: 1;
+    &:hover {
+      color: var(--text-color);
     }
   }
 }
@@ -532,6 +528,32 @@ h4,
 
 .mask {
   background-color: rgba(0, 0, 0, 0.5);
+
+  &-light {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &-dark {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.z {
+  &-tooltip {
+    z-index: var(--z-tooltip);
+  }
+
+  &-dropdown {
+    z-index: var(--z-dropdown);
+  }
+
+  &-fixed {
+    z-index: var(--z-fixed);
+  }
+
+  &-modal {
+    z-index: var(--z-modal);
+  }
 }
 
 // ============================ Responsiveness ============================
