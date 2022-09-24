@@ -341,16 +341,6 @@ table {
 }
 
 // ============================ Box and border ============================
-
-.box {
-  background-color: var(--bg-color-dark);
-  color: var(--light-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-light);
-  padding: 1rem;
-}
-
 .rounded {
   border-radius: var(--border-radius);
 }
