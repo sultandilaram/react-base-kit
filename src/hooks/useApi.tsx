@@ -12,10 +12,14 @@ const HEADERS = {
   Accept: "application/json",
 };
 
-export default function useApi() {
+export default function useApi(api_url?: string) {
 
-  const { api_url: url } = useBase();
+  if (api_url && api_url.slice(-1) === "/") throw new Error("URL must not end with a slash");
+
+  const { api_url: config_url } = useBase();
   const { authToken } = useAuth();
+
+  const url = api_url || config_url;
 
   const get = React.useCallback(async <T = any,>(endpoint: string): Promise<Response<T> | T> => {
 

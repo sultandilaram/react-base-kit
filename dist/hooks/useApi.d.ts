@@ -1,5 +1,5 @@
 import { Response } from "../types";
-export default function useApi(): {
+export default function useApi(api_url?: string): {
     get: <T = any>(endpoint: string) => Promise<T | Response<T>>;
     post: <T_1 = any, R = any>(endpoint: string, data: T_1) => Promise<R | Response<R>>;
     put: <T_2 = any, R_1 = any>(endpoint: string, data: T_2) => Promise<R_1 | Response<R_1>>;

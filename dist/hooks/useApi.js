@@ -9,13 +9,15 @@ const HEADERS = {
   "Access-Control-Allow-Credentials": true,
   Accept: "application/json"
 };
-export default function useApi() {
+export default function useApi(api_url) {
+  if (api_url && api_url.slice(-1) === "/") throw new Error("URL must not end with a slash");
   const {
-    api_url: url
+    api_url: config_url
   } = useBase();
   const {
     authToken
   } = useAuth();
+  const url = api_url || config_url;
   const get = React.useCallback(async endpoint => {
     if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
     const response = await axios.get(url + endpoint, {
