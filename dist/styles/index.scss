@@ -509,6 +509,18 @@ h4,
   }
 }
 
+.white-mask {
+  background-color: rgba(255, 255, 255, 0.5);
+
+  &-light {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &-dark {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
 .z {
   &-tooltip {
     z-index: var(--z-tooltip);
@@ -526,17 +538,6 @@ h4,
     z-index: var(--z-modal);
   }
 }
-
-// ============================ Theme ============================
-@include color(bg);
-@include color(primary);
-@include color(secondary);
-@include color(success);
-@include color(danger);
-@include color(warning);
-@include color(info);
-@include color(light);
-@include color(dark);
 
 // ============================ Responsiveness ============================
 @include breakpoint("sm") {
@@ -610,3 +611,14 @@ h4,
     }
   }
 }
+
+// ============================ Theme ============================
+@include color(bg);
+@include color(primary);
+@include color(secondary);
+@include color(success);
+@include color(danger);
+@include color(warning);
+@include color(info);
+@include color(light);
+@include color(dark);
