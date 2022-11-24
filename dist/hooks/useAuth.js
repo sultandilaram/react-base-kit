@@ -1,20 +1,16 @@
-import React from 'react';
-import { useLocalStorage, useBase } from ".";
+import React from "react";
+import { useLocalStorage } from ".";
 export default function useAuth() {
-  const {
-    loginMethod,
-    logoutCallback
-  } = useBase();
-  const [authToken, setAuthToken] = useLocalStorage('auth_token', null);
-  const isAuth = React.useMemo(() => authToken === null ? true : false, [authToken]);
-  const login = React.useCallback(async (...args) => {
-    const token = await loginMethod(...args);
+  const [authToken, setAuthToken] = useLocalStorage("auth_token", null);
+  const isAuth = React.useMemo(() => !!authToken, [authToken]);
+  const login = React.useCallback(async loginCallback => {
+    const token = await loginCallback();
     setAuthToken(token);
-  }, [loginMethod, setAuthToken]);
-  const logout = React.useCallback(() => {
+  }, [setAuthToken]);
+  const logout = React.useCallback(logoutCallback => {
     setAuthToken(null);
-    logoutCallback && logoutCallback();
-  }, [logoutCallback, setAuthToken]);
+    logoutCallback && logoutCallback(authToken);
+  }, [authToken, setAuthToken]);
   return {
     authToken,
     isAuth,

@@ -1,5 +1,4 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { useTransition, animated } from 'react-spring';
@@ -30,13 +29,11 @@ export function ModalWrapper(props) {
       marginTop: "-10%"
     }
   });
-
   const dismissHandler = e => {
     if (e.target === e.currentTarget) {
       props.showState[1](false);
     }
   };
-
   return modalTransition((style, item) => item && /*#__PURE__*/React.createElement(animated.div, _extends({}, props, {
     style: style,
     className: "modal-wrapper fixed top0 left0 vh100 vw100 mask-light children-center z-modal " + props.className,

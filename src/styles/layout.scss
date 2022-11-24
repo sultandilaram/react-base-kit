@@ -1,0 +1,76 @@
+@import "./mixins.scss";
+
+section {
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  &-fluid {
+    width: 100%;
+  }
+}
+
+.wrapper {
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  .sidebar {
+    width: var(--sidebar-width);
+  }
+  main {
+    width: 100%;
+  }
+  main,
+  .sidebar {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+  }
+}
+
+@each $breakpoint, $_ in $breakpoints {
+  $prefix: "";
+  @if $breakpoint != "" {
+    $prefix: #{$breakpoint}-;
+  }
+  @include breakpoint($breakpoint) {
+    .#{$prefix}visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .#{$prefix}invisible {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    @include display($prefix);
+    @include flex($prefix);
+    @include align($prefix);
+
+    .#{$prefix}h-header {
+      height: var(--header-height);
+    }
+
+    @for $i from 0 through 500 {
+      @include height_width($prefix, $i);
+      @include margin($prefix, $i);
+      @include padding($prefix, $i);
+      @include position($prefix, $i);
+    }
+
+    @for $i from 0 through 12 {
+      @include border($prefix, $i);
+      @include gap($prefix, $i);
+      @include grid-define($prefix, $i);
+      @for $span from 1 through 12 {
+        @include grid-position($prefix, $i, $span);
+      }
+    }
+  }
+}

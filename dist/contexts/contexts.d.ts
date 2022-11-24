@@ -1,7 +1,6 @@
 import React from "react";
-export interface IBaseContext {
+export interface IBaseContext<C = any> {
     api_url: string;
-    loginMethod: (...args: any) => Promise<string>;
-    logoutCallback?: () => void;
+    custom?: C;
 }
-export declare const BaseContext: React.Context<IBaseContext | undefined>;
+export declare const BaseContext: React.Context<IBaseContext<any> | undefined>;

@@ -18,37 +18,49 @@ export default function useApi(api_url) {
     authToken
   } = useAuth();
   const url = api_url || config_url;
-  const get = React.useCallback(async endpoint => {
+  const get = React.useCallback(async (endpoint, opts = {
+    auth: true
+  }) => {
     if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
     const response = await axios.get(url + endpoint, {
-      headers: authToken ? { ...HEADERS,
+      headers: authToken && opts.auth ? {
+        ...HEADERS,
         Authorization: `Bearer ${authToken}`
       } : HEADERS
     });
     return response.data;
   }, [url, authToken]);
-  const post = React.useCallback(async (endpoint, data) => {
+  const post = React.useCallback(async (endpoint, data, opts = {
+    auth: true
+  }) => {
     if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
     const response = await axios.post(url + endpoint, data, {
-      headers: authToken ? { ...HEADERS,
+      headers: authToken && opts.auth ? {
+        ...HEADERS,
         Authorization: `Bearer ${authToken}`
       } : HEADERS
     });
     return response.data;
   }, [url, authToken]);
-  const put = React.useCallback(async (endpoint, data) => {
+  const put = React.useCallback(async (endpoint, data, opts = {
+    auth: true
+  }) => {
     if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
     const response = await axios.put(url + endpoint, data, {
-      headers: authToken ? { ...HEADERS,
+      headers: authToken && opts.auth ? {
+        ...HEADERS,
         Authorization: `Bearer ${authToken}`
       } : HEADERS
     });
     return response.data;
   }, [url, authToken]);
-  const del = React.useCallback(async endpoint => {
+  const del = React.useCallback(async (endpoint, opts = {
+    auth: true
+  }) => {
     if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
     const response = await axios.delete(url + endpoint, {
-      headers: authToken ? { ...HEADERS,
+      headers: authToken && opts.auth ? {
+        ...HEADERS,
         Authorization: `Bearer ${authToken}`
       } : HEADERS
     });

@@ -24,11 +24,12 @@ export default function useLocalStorage<T = any>(key: string, initialState: T ex
   })
 
   const setValue = React.useCallback((value: any) => {
-    setValueState(value)
     try {
       localStorage.setItem(key, JSON.stringify(value))
+      setValueState(value)
     } catch (e) {
       console.error(e)
+      console.error(`Above error occured while updating localstorage: ${key}`)
     }
   }, [setValueState])
 

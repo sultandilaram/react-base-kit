@@ -21,12 +21,12 @@ export default function useApi(api_url?: string) {
 
   const url = api_url || config_url;
 
-  const get = React.useCallback(async <T = any,>(endpoint: string): Promise<Response<T> | T> => {
+  const get = React.useCallback(async <R = any,>(endpoint: string, opts = { auth: true }): Promise<Response<R>> => {
 
     if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
 
     const response = await axios.get(url + endpoint, {
-      headers: authToken
+      headers: (authToken && opts.auth)
         ? { ...HEADERS, Authorization: `Bearer ${authToken}` }
         : HEADERS,
     });
@@ -35,12 +35,12 @@ export default function useApi(api_url?: string) {
   }, [url, authToken]);
 
   const post = React.useCallback(
-    async <T = any, R = any>(endpoint: string, data: T): Promise<Response<R> | R> => {
+    async <T = any, R = any>(endpoint: string, data: T, opts = { auth: true }): Promise<Response<R>> => {
 
       if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
 
       const response = await axios.post(url + endpoint, data, {
-        headers: authToken
+        headers: (authToken && opts.auth)
           ? { ...HEADERS, Authorization: `Bearer ${authToken}` }
           : HEADERS,
       });
@@ -51,12 +51,12 @@ export default function useApi(api_url?: string) {
   );
 
   const put = React.useCallback(
-    async <T = any, R = any>(endpoint: string, data: T): Promise<Response<R> | R> => {
+    async <T = any, R = any>(endpoint: string, data: T, opts = { auth: true }): Promise<Response<R>> => {
 
       if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
 
       const response = await axios.put(url + endpoint, data, {
-        headers: authToken
+        headers: (authToken && opts.auth)
           ? { ...HEADERS, Authorization: `Bearer ${authToken}` }
           : HEADERS,
       });
@@ -66,12 +66,12 @@ export default function useApi(api_url?: string) {
     [url, authToken]
   );
 
-  const del = React.useCallback(async <T = any,>(endpoint: string): Promise<Response<T> | T> => {
+  const del = React.useCallback(async <R = any,>(endpoint: string, opts = { auth: true }): Promise<Response<R>> => {
 
     if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
 
     const response = await axios.delete(url + endpoint, {
-      headers: authToken
+      headers: (authToken && opts.auth)
         ? { ...HEADERS, Authorization: `Bearer ${authToken}` }
         : HEADERS,
     });
