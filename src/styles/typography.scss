@@ -1,0 +1,129 @@
+h1,
+h2,
+h3,
+h4 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+h1,
+.title {
+  // Title
+  width: 100%;
+  font-size: var(--title-size);
+}
+
+h2,
+.section-title {
+  // Section Title
+  font-size: var(--section-title-size);
+}
+
+h3,
+.heading {
+  // Heading
+  font-size: var(--heading-size);
+}
+
+h4,
+.sub-heading {
+  // Sub Heading
+  font-size: var(--subheading-size);
+}
+
+.subtitle {
+  // Subtitle
+  display: block;
+  font-size: var(--font-size);
+  margin-bottom: 2rem;
+}
+
+.caption {
+  // Caption
+  display: block;
+  font-size: var(--font-small);
+}
+
+.font-regular {
+  font-weight: var(--font-regular) !important;
+}
+
+.font-medium {
+  font-weight: var(--font-medium) !important;
+}
+
+.font-bold {
+  font-weight: var(--font-semi-bold) !important;
+}
+
+.font-light {
+  color: var(--text-light);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.overline {
+  text-decoration: overline;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-break {
+  word-break: break-word;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+}
+
+.text-ellipsis-multiline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@for $i from 3 through 10 {
+  .text-ellipsis-multiline-#{$i} {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $i;
+    -webkit-box-orient: vertical;
+  }
+}

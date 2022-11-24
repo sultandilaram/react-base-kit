@@ -1,18 +1,9 @@
 $breakpoints: (
   "": 0px,
-  "big-desktop": 300.5em,
-  "desktop": 112.5em,
-  "lg": 1920px,
-  "laptop": 90em,
-  "md": 1280px,
-  "laptop-md": 64em,
-  "sm": 768px,
-  "laptop-sm": 48em,
-  "phone": 26.5625em,
-  "phone-md": 23.4375em,
-  "xs": 375px,
-  "phone-sm": 20em,
-  "phone-xs": 7.5em,
+  "desktop": 1920px,
+  "laptop": 1280px,
+  "tablet": 768px,
+  "phone": 375px,
 );
 
 @mixin breakpoint($breakpoint) {
@@ -251,19 +242,19 @@ $breakpoints: (
     }
 
     &#{$value} {
-      border: $value * 1px solid var(--border-color) !important;
+      border: $value * 1px solid var(--border-color);
     }
     &l#{$value} {
-      border-left: $value * 1px solid var(--border-color) !important;
+      border-left: $value * 1px solid var(--border-color);
     }
     &r#{$value} {
-      border-right: $value * 1px solid var(--border-color) !important;
+      border-right: $value * 1px solid var(--border-color);
     }
     &b#{$value} {
-      border-bottom: $value * 1px solid var(--border-color) !important;
+      border-bottom: $value * 1px solid var(--border-color);
     }
     &t#{$value} {
-      border-top: $value * 1px solid var(--border-color) !important;
+      border-top: $value * 1px solid var(--border-color);
     }
   }
 }
@@ -859,7 +850,7 @@ $breakpoints: (
   }
 
   .b-#{$color} {
-    border-color: var(--#{$color}-color-dark);
+    border-color: var(--#{$color}-color-dark) !important;
   }
 
   .btn-#{$color} {

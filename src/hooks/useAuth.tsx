@@ -1,28 +1,34 @@
-import React from 'react';
+import React from "react";
 import { useLocalStorage, useBase } from ".";
 
 export default function useAuth() {
+  const [authToken, setAuthToken] = useLocalStorage<string | null>(
+    "auth_token",
+    null
+  );
 
-  const { loginMethod, logoutCallback } = useBase();
+  const isAuth = React.useMemo(() => !!authToken, [authToken]);
 
-  const [authToken, setAuthToken] = useLocalStorage<string | null>('auth_token', null);
+  const login = React.useCallback(
+    async (loginCallback: () => Promise<string | null> | (string | null)) => {
+      const token = await loginCallback();
+      setAuthToken(token);
+    },
+    [setAuthToken]
+  );
 
-  const isAuth = React.useMemo(() => authToken === null ? true : false, [authToken]);
-
-  const login = React.useCallback(async (...args: any) => {
-    const token = await loginMethod(...args);
-    setAuthToken(token)
-  }, [loginMethod, setAuthToken]);
-
-  const logout = React.useCallback(() => {
-    setAuthToken(null)
-    logoutCallback && logoutCallback();
-  }, [logoutCallback, setAuthToken]);
+  const logout = React.useCallback(
+    (logoutCallback?: (token: string | null) => void) => {
+      setAuthToken(null);
+      logoutCallback && logoutCallback(authToken);
+    },
+    [authToken, setAuthToken]
+  );
 
   return {
     authToken,
     isAuth,
     login,
     logout,
-  }
+  };
 }

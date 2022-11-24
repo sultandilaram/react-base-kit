@@ -17,8 +17,9 @@
   @include gen-color("light", 0, 0%, 98%);
   @include gen-color("dark", 0, 0%, 15%);
 
-  --bg-color: hsl(0, 0%, 98%);
-  --bg-color-dark: hsl(0, 0%, 95%);
+  --bg-color: hsl(0, 0%, 97%);
+  --bg-color-dark: hsl(0, 0%, 93%);
+  --bg-color-hover: hsl(0, 0%, 95%);
   --bg-color-light: hsl(0, 0%, 100%);
   --border-color: hsl(0, 0%, 80%);
   --title-color: #000;
@@ -27,7 +28,8 @@
 
   body.dark {
     --bg-color: hsl(var(--primary-hue), 20%, 10%);
-    --bg-color-dark: hsl(var(--primary-hue), 20%, 8%);
+    --bg-color-dark: hsl(var(--primary-hue), 20%, 5%);
+    --bg-color-hover: hsl(var(--primary-hue), 20%, 8%);
     --bg-color-light: hsl(var(--primary-hue), 20%, 15%);
     --border-color: hsl(0, 0%, 20%);
     --title-color: #fff;
