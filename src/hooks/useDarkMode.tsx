@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useLocalStorage, usePrefersDarkMode } from ".";
 
-export default function useDarkMode() {
+export default function useDarkMode(): [
+  boolean,
+  React.Dispatch<React.SetStateAction<boolean>>
+] {
   const [enabledState, setEnabledState] = useLocalStorage<boolean>(
     "dark-mode-enabled",
     false
