@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocalStorage, usePrefersDarkMode } from ".";
 
 export default function useDarkMode() {
-  const [enabledState, setEnabledState] = useLocalStorage(
+  const [enabledState, setEnabledState] = useLocalStorage<boolean>(
     "dark-mode-enabled",
     false
   );
