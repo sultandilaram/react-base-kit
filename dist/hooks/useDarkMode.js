@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 import { useLocalStorage, usePrefersDarkMode } from ".";
-export default function useDarkMode() {
+export default function useDarkMode(darkModeClass = "dark") {
   const [enabledState, setEnabledState] = useLocalStorage("dark-mode-enabled", false);
   const prefersDarkMode = usePrefersDarkMode();
   const enabled = typeof enabledState !== "undefined" ? enabledState : prefersDarkMode;
   useEffect(() => {
-    const className = "dark-mode";
     const element = window.document.body;
     if (enabled) {
-      element.classList.add(className);
+      element.classList.add(darkModeClass);
     } else {
-      element.classList.remove(className);
+      element.classList.remove(darkModeClass);
     }
   }, [enabled]);
   return [enabled, setEnabledState];
