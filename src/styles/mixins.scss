@@ -1,9 +1,10 @@
 $breakpoints: (
   "": 0px,
-  "desktop": 1920px,
-  "laptop": 1280px,
-  "tablet": 768px,
-  "phone": 375px,
+  "xxl": 2560px,
+  "xl": 1920px,
+  "lg": 1440px,
+  "md": 768px,
+  "sm": 375px,
 );
 
 @mixin breakpoint($breakpoint) {
@@ -850,7 +851,7 @@ $breakpoints: (
   }
 
   .b-#{$color} {
-    border-color: var(--#{$color}-color-dark) !important;
+    border-color: var(--#{$color}-color-dark);
   }
 
   .btn-#{$color} {
