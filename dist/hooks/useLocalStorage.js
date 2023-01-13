@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 export default function useLocalStorage(key, initialState) {
   const [value, setValueState] = React.useState(() => {
     try {
@@ -10,13 +10,13 @@ export default function useLocalStorage(key, initialState) {
           return item;
         }
       } else {
-        const defaultValue = typeof initialState === 'function' ? initialState() : initialState;
+        const defaultValue = typeof initialState === "function" ? initialState() : initialState;
         localStorage.setItem(key, JSON.stringify(defaultValue));
         return defaultValue;
       }
     } catch (e) {
       console.error(e);
-      return typeof initialState === 'function' ? initialState() : initialState;
+      return typeof initialState === "function" ? initialState() : initialState;
     }
   });
   const setValue = React.useCallback(value => {

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useAuth, useBase } from '.';
+import { useBase } from ".";
 const HEADERS = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
@@ -10,62 +10,51 @@ const HEADERS = {
   Accept: "application/json"
 };
 export default function useApi(api_url) {
-  if (api_url && api_url.slice(-1) === "/") throw new Error("URL must not end with a slash");
+  if (api_url && api_url.slice(-1) === "/") api_url = api_url.slice(0, -1);
   const {
     api_url: config_url
   } = useBase();
-  const {
-    authToken
-  } = useAuth();
   const url = api_url || config_url;
-  const get = React.useCallback(async (endpoint, opts = {
-    auth: true
-  }) => {
-    if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
+  const get = React.useCallback(async (endpoint, opts) => {
+    if (endpoint[0] !== "/") endpoint = "/" + endpoint;
     const response = await axios.get(url + endpoint, {
-      headers: authToken && opts.auth ? {
+      headers: opts?.authToken ? {
         ...HEADERS,
-        Authorization: `Bearer ${authToken}`
+        Authorization: `Bearer ${opts.authToken}`
       } : HEADERS
     });
     return response.data;
-  }, [url, authToken]);
-  const post = React.useCallback(async (endpoint, data, opts = {
-    auth: true
-  }) => {
-    if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
+  }, [url]);
+  const post = React.useCallback(async (endpoint, data, opts) => {
+    if (endpoint[0] !== "/") endpoint = "/" + endpoint;
     const response = await axios.post(url + endpoint, data, {
-      headers: authToken && opts.auth ? {
+      headers: opts?.authToken ? {
         ...HEADERS,
-        Authorization: `Bearer ${authToken}`
+        Authorization: `Bearer ${opts.authToken}`
       } : HEADERS
     });
     return response.data;
-  }, [url, authToken]);
-  const put = React.useCallback(async (endpoint, data, opts = {
-    auth: true
-  }) => {
-    if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
+  }, [url]);
+  const put = React.useCallback(async (endpoint, data, opts) => {
+    if (endpoint[0] !== "/") endpoint = "/" + endpoint;
     const response = await axios.put(url + endpoint, data, {
-      headers: authToken && opts.auth ? {
+      headers: opts?.authToken ? {
         ...HEADERS,
-        Authorization: `Bearer ${authToken}`
+        Authorization: `Bearer ${opts.authToken}`
       } : HEADERS
     });
     return response.data;
-  }, [url, authToken]);
-  const del = React.useCallback(async (endpoint, opts = {
-    auth: true
-  }) => {
-    if (endpoint[0] !== "/") throw new Error("Endpoint must start with a slash");
+  }, [url]);
+  const del = React.useCallback(async (endpoint, opts) => {
+    if (endpoint[0] !== "/") endpoint = "/" + endpoint;
     const response = await axios.delete(url + endpoint, {
-      headers: authToken && opts.auth ? {
+      headers: opts?.authToken ? {
         ...HEADERS,
-        Authorization: `Bearer ${authToken}`
+        Authorization: `Bearer ${opts.authToken}`
       } : HEADERS
     });
     return response.data;
-  }, [url, authToken]);
+  }, [url]);
   return {
     get,
     post,

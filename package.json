@@ -1,6 +1,6 @@
 {
   "name": "react-base-kit",
-  "version": "0.4.1",
+  "version": "0.5.3",
   "description": "React utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-icons": "^4.4.0",
-    "react-router-dom": "^6.4.1",
+    "react-router-dom": "^6.6.2",
     "react-spring": "^9.5.4",
     "sass": "^1.54.9",
     "typescript": "^4.8.3"
